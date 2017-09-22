@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {IMyDpOptions, IMyDateModel, IMyInputFieldChanged, IMyCalendarViewChanged, IMyInputFocusBlur, IMyMarkedDate, IMyDate, IMySelector} from '../../src/my-date-picker/interfaces';
 import {MyDatePicker} from '../../src/my-date-picker/my-date-picker.component';
 
-declare var require:any;
+declare var require: any;
 const normalSampleTpl: string = require('./sample-date-picker-normal.html');
 
 @Component({
@@ -16,7 +16,7 @@ export class SampleDatePickerNormal implements OnInit {
 
     private myDatePickerNormalOptions: IMyDpOptions = {
         todayBtnTxt: 'Today',
-        dateFormat: 'mmm dd, yyyy',
+        dateFormat: 'week ww  mm dd, yyyy',
         firstDayOfWeek: 'mo',
         sunHighlight: true,
         markCurrentDay: true,
@@ -59,7 +59,7 @@ export class SampleDatePickerNormal implements OnInit {
         allowDeselectDate: true,
         disableWeekdays: []
     };
-    private selectedDateNormal:string = '';
+    private selectedDateNormal: string = '';
 
     private selectedTextNormal: string = '';
     private border: string = 'none';
@@ -242,7 +242,7 @@ export class SampleDatePickerNormal implements OnInit {
 
     onDateChanged(event: IMyDateModel) {
         console.log('onDateChanged(): ', event.date, ' - jsdate: ', new Date(event.jsdate).toLocaleDateString(), ' - formatted: ', event.formatted, ' - epoc timestamp: ', event.epoc);
-        if(event.formatted !== '') {
+        if (event.formatted !== '') {
             this.selectedTextNormal = 'Formatted: ' + event.formatted + ' - epoc timestamp: ' + event.epoc;
             this.border = '1px solid #CCC';
 

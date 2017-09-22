@@ -25,6 +25,7 @@ enum MonthId {prev = 1, curr = 2, next = 3}
 const MM = "mm";
 const MMM = "mmm";
 const DD = "dd";
+const WW = "ww";
 const YYYY = "yyyy";
 
 @Component({
@@ -676,7 +677,7 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
 
     formatDate(val: any): string {
         // Returns formatted date string, if mmm is part of dateFormat returns month as a string
-        let formatted: string = this.opts.dateFormat.replace(YYYY, val.year).replace(DD, this.preZero(val.day));
+        let formatted: string = this.opts.dateFormat.replace(YYYY, val.year).replace(DD, this.preZero(val.day)).replace(WW, "" + this.utilService.getWeekNumber(val));
         return this.opts.dateFormat.indexOf(MMM) !== -1 ? formatted.replace(MMM, this.monthText(val.month)) : formatted.replace(MM, this.preZero(val.month));
     }
 
