@@ -106,6 +106,7 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         disableWeekends: <boolean> false,
         disableWeekdays: <Array<string>> [],
         showWeekNumbers: <boolean> false,
+        selectWeek: <boolean> false,
         height: <string> "34px",
         width: <string> "100%",
         selectionTxtFontSize: <string> "14px",
@@ -564,22 +565,37 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         }
     }
 
+    onWeekClicked(cell: any): void {
+        this.onCellClicked(cell.week[0]);
+    }
+
     onCellClicked(cell: any): void {
+        let dateObj = cell.dateObj;
+        if (this.opts.selectWeek) {
+            let dateModel: IMyDateModel = this.getDateModel(dateObj);
+            // Change date to monday of that week
+            const day = dateModel.jsdate.getDay(); // su = 0, sa = 6
+            let time = dateModel.jsdate.getTime(); // in milliseconds
+            time -= (day === 0 ? 6 : day - 1) * 1000 * 60 * 60 * 24;
+            const newDate = new Date(time);
+            dateObj = {year: newDate.getFullYear(), month: newDate.getMonth() + 1, day: newDate.getDate()};
+        }
+
         // Cell clicked on the calendar
-        if (cell.cmo === this.prevMonthId) {
+        if (!this.opts.selectWeek && cell.cmo === this.prevMonthId) {
             // Previous month day
             this.onPrevMonth();
         }
-        else if (cell.cmo === this.currMonthId) {
+        else if (this.opts.selectWeek || cell.cmo === this.currMonthId) {
             // Current month day - if date is already selected clear it
-            if (this.opts.allowDeselectDate && this.utilService.isSameDate(cell.dateObj, this.selectedDate)) {
+            if (this.opts.allowDeselectDate && this.utilService.isSameDate(dateObj, this.selectedDate)) {
                 this.clearDate();
             }
             else {
-                this.selectDate(cell.dateObj, CalToggle.CloseByDateSel);
+                this.selectDate(dateObj, CalToggle.CloseByDateSel);
             }
         }
-        else if (cell.cmo === this.nextMonthId) {
+        else if (!this.opts.selectWeek && cell.cmo === this.nextMonthId) {
             // Next month day
             this.onNextMonth();
         }
@@ -772,7 +788,7 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
                     dayNbr++;
                 }
             }
-            let weekNbr: number = this.opts.showWeekNumbers  && this.opts.firstDayOfWeek === "mo" ? this.utilService.getWeekNumber(week[0].dateObj) : 0;
+            let weekNbr: number = (this.opts.showWeekNumbers || this.opts.selectWeek) && this.opts.firstDayOfWeek === "mo" ? this.utilService.getWeekNumber(week[0].dateObj) : 0;
             this.dates.push({week: week, weekNbr: weekNbr});
         }
 

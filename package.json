@@ -1,17 +1,18 @@
 {
-  "name": "mydatepicker",
+  "name": "mydatepicker-selectweek",
   "version": "2.0.31",
-  "description": "Angular date picker",
+  "description": "Angular date picker, forked from kekeh",
   "keywords": [
     "Angular2",
     "Angular4",
-    "date picker"
+    "date picker",
+    "week picker"
   ],
-  "author": "kekeh",
+  "author": "Paul Mestrum",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kekeh/mydatepicker.git"
+    "url": "https://github.com/pmestrum/mydaterangepicker-selectweek.git"
   },
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js --progress",
@@ -20,7 +21,7 @@
     "test": "karma start config/karma.conf.js",
     "tslint": "gulp tslint",
     "ngc": "ngc -p tsconfig.publish.json",
-    "bundle": "rollup -c rollup.config.js && uglifyjs npmdist/bundles/mydatepicker.umd.js --compress --mangle --screw-ie8 -o npmdist/bundles/mydatepicker.umd.min.js"
+    "bundle": "rollup -c rollup.config.js && uglifyjs npmdist/bundles/mydatepicker.umd.js --compress --mangle --screw-ie8 -o npmdist/bundles/mydatepicker-selectweek.umd.min.js"
   },
   "main": "bundles/mydatepicker.umd.js",
   "typings": "index.d.ts",

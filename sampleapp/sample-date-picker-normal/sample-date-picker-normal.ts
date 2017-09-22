@@ -148,6 +148,12 @@ export class SampleDatePickerNormal implements OnInit {
         this.myDatePickerNormalOptions = copy;
     }
 
+    onSelectWeek(checked: boolean) {
+        let copy = this.getCopyOfOptions();
+        copy.selectWeek = checked;
+        this.myDatePickerNormalOptions = copy;
+    }
+
     onMarkToday(checked: boolean): void {
         let d: Date = new Date();
         let copy = this.getCopyOfOptions();

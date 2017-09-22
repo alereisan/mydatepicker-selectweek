@@ -352,6 +352,7 @@
     text-decoration: underline;
 }
 
+.mydp .tableselectedweek .datevalue,
 .mydp .selectedday .datevalue,
 .mydp .selectedmonth .monthvalue,
 .mydp .selectedyear .yearvalue {
@@ -506,6 +507,12 @@
 .mydp .tablesingleyear:hover {
     background-color: #DDD;
 }
+
+.mydp .tableselectweek:hover,
+.mydp .tableselectweek:hover .currmonth {
+    background-color: #DDD !important;
+}
+
 
 .mydp .monthlabel,
 .mydp .yearlabel,

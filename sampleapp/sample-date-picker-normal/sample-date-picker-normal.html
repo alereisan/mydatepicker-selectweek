@@ -109,6 +109,16 @@
         </tr>
         <tr>
             <td>
+            </td>
+            <td>
+                <label>
+                    <span>Select week:</span>
+                    <input style="cursor: pointer" type="checkbox" (change)="onSelectWeek($event.currentTarget.checked)" [checked]="false">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <label>
                     <span>Mark today:</span>
                     <input style="cursor: pointer" type="checkbox" (change)="onMarkToday($event.currentTarget.checked)" [checked]="false">
