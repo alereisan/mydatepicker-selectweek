@@ -92,7 +92,7 @@ export class UtilService {
         let pos: number = this.getDatePartIndex(dateFormat, datePart);
         if (pos !== -1) {
             let value: string = dateString.substring(pos, pos + datePart.length);
-            if (datePart === 'ww' && !/^\d+$/.test(value)) {
+            if (datePart === "ww" && !/^\d+$/.test(value)) {
                 value = dateString.substring(pos, pos + 1);
             }
             if (!/^\d+$/.test(value)) {
