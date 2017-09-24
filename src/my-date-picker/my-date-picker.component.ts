@@ -808,16 +808,22 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
             let sd: string = <string> selDate;
             let df: string = this.opts.dateFormat;
 
-            date.month = df.indexOf(MMM) !== -1
-                ? this.utilService.parseDatePartMonthName(df, sd, MMM, this.opts.monthLabels)
-                : this.utilService.parseDatePartNumber(df, sd, MM);
+            if (df.indexOf(WW) !== -1) {
+                const week = this.utilService.parseDatePartNumber(df, sd, WW);
+                const year = this.utilService.parseDatePartNumber(df, sd, YYYY);
+                date = this.utilService.getDateFromWeekNumber(week, year);
+            } else {
+                date.month = df.indexOf(MMM) !== -1
+                    ? this.utilService.parseDatePartMonthName(df, sd, MMM, this.opts.monthLabels)
+                    : this.utilService.parseDatePartNumber(df, sd, MM);
 
-            if (df.indexOf(MMM) !== -1 && this.opts.monthLabels[date.month]) {
-                df = this.utilService.changeDateFormat(df, this.opts.monthLabels[date.month].length);
+                if (df.indexOf(MMM) !== -1 && this.opts.monthLabels[date.month]) {
+                    df = this.utilService.changeDateFormat(df, this.opts.monthLabels[date.month].length);
+                }
+
+                date.day = this.utilService.parseDatePartNumber(df, sd, DD);
+                date.year = this.utilService.parseDatePartNumber(df, sd, YYYY);
             }
-
-            date.day = this.utilService.parseDatePartNumber(df, sd, DD);
-            date.year = this.utilService.parseDatePartNumber(df, sd, YYYY);
         }
         else if (typeof selDate === "object") {
             date = selDate;

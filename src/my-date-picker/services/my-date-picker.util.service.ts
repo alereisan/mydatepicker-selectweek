@@ -92,6 +92,9 @@ export class UtilService {
         let pos: number = this.getDatePartIndex(dateFormat, datePart);
         if (pos !== -1) {
             let value: string = dateString.substring(pos, pos + datePart.length);
+            if (datePart === 'ww' && !/^\d+$/.test(value)) {
+                value = dateString.substring(pos, pos + 1);
+            }
             if (!/^\d+$/.test(value)) {
                 return -1;
             }
@@ -211,6 +214,15 @@ export class UtilService {
         let d: Date = new Date(date.year, date.month - 1, date.day, 0, 0, 0, 0);
         d.setDate(d.getDate() + (d.getDay() === 0 ? -3 : 4 - d.getDay()));
         return Math.round(((d.getTime() - new Date(d.getFullYear(), 0, 4).getTime()) / 86400000) / 7) + 1;
+    }
+
+    getDateFromWeekNumber(weekNumber: number, year: number): IMyDate {
+        const firstThursdayOfYear = new Date(year < 1900 ? 2000 + year : year, 0, 1, 0, 0, 0);
+        firstThursdayOfYear.setDate(1 + (7 + 4 - firstThursdayOfYear.getDay()) % 7);  // 0 (su) => +4, 1 (mo) => +3, 2 (tu) => +2, 3 (we) => +1, 4 (th) => +0, 5 (fr) => +6, 6 (sa) => +5
+        const weekInMillis = 7 /*days*/ * 24 /* hours */ * 60 /* minutes */ * 60 /* seconds */ * 1000;
+        const date = new Date(firstThursdayOfYear.getTime() + (weekNumber - 1) * weekInMillis);
+        date.setDate(date.getDate() - 3);
+        return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
     }
 
     isMonthDisabledByDisableUntil(date: IMyDate, disableUntil: IMyDate): boolean {
