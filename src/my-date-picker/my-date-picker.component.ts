@@ -574,10 +574,10 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
         let dateObj = cell.dateObj;
         if (this.opts.selectWeek) {
             let dateModel: IMyDateModel = this.getDateModel(dateObj);
-            // Change date to monday of that week
+            // Change date to thursday of that week
             const day = dateModel.jsdate.getDay(); // su = 0, sa = 6
             let time = dateModel.jsdate.getTime(); // in milliseconds
-            time -= (day === 0 ? 6 : day - 1) * 1000 * 60 * 60 * 24;
+            time -= ((day === 0 ? 6 : day - 1) + 3) * 1000 * 60 * 60 * 24;
             const newDate = new Date(time);
             dateObj = {year: newDate.getFullYear(), month: newDate.getMonth() + 1, day: newDate.getDate()};
         }
