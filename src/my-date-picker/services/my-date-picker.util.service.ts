@@ -221,7 +221,6 @@ export class UtilService {
         firstThursdayOfYear.setDate(1 + (7 + 4 - firstThursdayOfYear.getDay()) % 7);  // 0 (su) => +4, 1 (mo) => +3, 2 (tu) => +2, 3 (we) => +1, 4 (th) => +0, 5 (fr) => +6, 6 (sa) => +5
         const weekInMillis = 7 /*days*/ * 24 /* hours */ * 60 /* minutes */ * 60 /* seconds */ * 1000;
         const date = new Date(firstThursdayOfYear.getTime() + (weekNumber - 1) * weekInMillis);
-        date.setDate(date.getDate() - 3);
         return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
     }
 
