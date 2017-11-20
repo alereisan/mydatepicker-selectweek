@@ -197,7 +197,7 @@ Value of the __options__ attribute is a type of [IMyDpOptions](https://github.co
 | :------------ | :------------ | :----- | :--------- |
 | __dayLabels__     | {su: 'Sun', mo: 'Mon', tu: 'Tue', we: 'Wed', th: 'Thu', fr: 'Fri', sa: 'Sat'} | [IMyDayLabels](https://github.com/kekeh/mydatepicker/blob/master/src/my-date-picker/interfaces/my-day-labels.interface.ts) | Day labels visible on the selector. |
 | __monthLabels__   | { 1: 'Jan', 2: 'Feb', 3: 'Mar', 4: 'Apr', 5: 'May', 6: 'Jun', 7: 'Jul', 8: 'Aug', 9: 'Sep', 10: 'Oct', 11: 'Nov', 12: 'Dec' } | [IMyMonthLabels](https://github.com/kekeh/mydatepicker/blob/master/src/my-date-picker/interfaces/my-month-labels.interface.ts) | Month labels visible on the selector. |
-| __dateFormat__    | yyyy-mm-dd | string | Date format on the selection area and the callback. For example: dd.mm.yyyy, yyyy-mm-dd, dd mmm yyyy (mmm = Month as a text) |
+| __dateFormat__    | yyyy-mm-dd | string |  Date format on the selection area and the callback. For example: d.m.yyyy, dd.mm.yyyy, yyyy-m-d, yyyy-mm-dd, d mmm yyyy, dd mmm yyyy (d = Day not leading zero, dd = Day with leading zero, m = Month not leading zero, mm = Month with leading zero, mmm = Month as a text, yyyy = Year four digit) |
 | __showTodayBtn__   | true | boolean | Show 'Today' button on calendar. |
 | __todayBtnTxt__   | Today | string | Today button text. Can be used if __showTodayBtn = true__. |
 | __firstDayOfWeek__   | mo | string | First day of week on calendar. One of the following: mo, tu, we, th, fr, sa, su |
@@ -241,6 +241,7 @@ Value of the __options__ attribute is a type of [IMyDpOptions](https://github.co
 | __showSelectorArrow__   | true | boolean | Is selector (calendar) arrow shown or not. Can be used if __inline = false__. |
 | __showInputField__   | true | boolean | Is selection area input field shown or not. If not, just show the icon. Can be used if __inline = false__. |
 | __openSelectorOnInputClick__   | false | boolean | Open selector when the input field is clicked. Can be used if __inline = false and editableDateField = false__. |
+| __allowSelectionOnlyInCurrentMonth__ | true | boolean | Is a date selection allowed or not other than current month. |
 | __ariaLabelInputField__   | Date input field | string | Aria label text of input field. |
 | __ariaLabelClearDate__   | Clear Date | string | Aria label text of clear date button. |
 | __ariaLabelDecreaseDate__   | Decrease Date | string | Aria label text of decrease date button. |
