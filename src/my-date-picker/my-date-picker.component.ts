@@ -60,6 +60,7 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
     visibleMonth: IMyMonth = {monthTxt: "", monthNbr: 0, year: 0};
     selectedMonth: IMyMonth = {monthTxt: "", monthNbr: 0, year: 0};
     selectedDate: IMyDate = {year: 0, month: 0, day: 0};
+    flagDate: IMyDate = {year: 1920, month: 0, day: 0};
     weekDays: Array<string> = [];
     dates: Array<IMyWeek> = [];
     months: Array<Array<IMyCalendarMonth>> = [];
@@ -636,6 +637,14 @@ export class MyDatePicker implements OnChanges, ControlValueAccessor {
     }
 
     selectDate(date: IMyDate, closeReason: number): void {
+      console.log(this.selectedDate);
+      console.log(date);
+      console.log(this.formatDate(this.selectedDate));
+      if(this.formatDate(this.flagDate) === this.formatDate(date)) {
+        return;
+      } else {
+        this.flagDate = date;
+      }
         // Date selected, notifies parent using callbacks and value accessor
         let dateModel: IMyDateModel = this.getDateModel(date);
         this.dateChanged.emit(dateModel);
