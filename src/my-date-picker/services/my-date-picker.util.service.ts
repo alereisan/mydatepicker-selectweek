@@ -220,7 +220,9 @@ export class UtilService {
         const firstThursdayOfYear = new Date(year < 1900 ? 2000 + year : year, 0, 1, 0, 0, 0);
         firstThursdayOfYear.setDate(1 + (7 + 4 - firstThursdayOfYear.getDay()) % 7);  // 0 (su) => +4, 1 (mo) => +3, 2 (tu) => +2, 3 (we) => +1, 4 (th) => +0, 5 (fr) => +6, 6 (sa) => +5
         const weekInMillis = 7 /*days*/ * 24 /* hours */ * 60 /* minutes */ * 60 /* seconds */ * 1000;
-        const date = new Date(firstThursdayOfYear.getTime() + (weekNumber - 1) * weekInMillis);
+        const date = new Date(firstThursdayOfYear.getTime() + (weekNumber) * weekInMillis);
+        date.setDate(date.getDate() - 3);
+        console.log("hallo", date);
         return {year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate()};
     }
 

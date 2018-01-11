@@ -26,7 +26,10 @@
   "main": "bundles/mydatepicker.umd.js",
   "typings": "index.d.ts",
   "module": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@angular/cdk": "^5.0.4",
+    "@angular/material": "^5.0.4"
+  },
   "devDependencies": {
     "@angular/common": "2.2.4",
     "@angular/compiler": "2.2.4",
