@@ -12,6 +12,14 @@ export class LocaleService {
             firstDayOfWeek: "mo",
             sunHighlight: true,
         },
+        "de-ch": {
+            dayLabels: {su: "So", mo: "Mo", tu: "Di", we: "Mi", th: "Do", fr: "Fr", sa: "Sa"},
+            monthLabels: { 1: "Jan", 2: "Feb", 3: "Mär", 4: "Apr", 5: "Mai", 6: "Jun", 7: "Jul", 8: "Aug", 9: "Sep", 10: "Okt", 11: "Nov", 12: "Dez" },
+            dateFormat: "dd.mm.yyyy",
+            todayBtnTxt: "Heute",
+            firstDayOfWeek: "mo",
+            sunHighlight: true
+        },
         "he": {
             dayLabels: {su: "רא", mo: "שנ", tu: "של", we: "רב", th: "חמ", fr: "שי", sa: "שב"},
             monthLabels: { 1: "ינו", 2: "פבר", 3: "מרץ", 4: "אפר", 5: "מאי", 6: "יונ", 7: "יול", 8: "אוג", 9: "ספט", 10: "אוק", 11: "נוב", 12: "דצמ" },
