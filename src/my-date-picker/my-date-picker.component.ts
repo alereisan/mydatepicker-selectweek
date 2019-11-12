@@ -6,8 +6,8 @@ import { UtilService } from "./services/my-date-picker.util.service";
 
 // webpack1_
 declare var require: any;
-const myDpStyles: string = require("./my-date-picker.component.css");	
-const myDpTpl: string = require("./my-date-picker.component.html");
+export const myDpStyles: string = require("./my-date-picker.component.css");	
+export const myDpTpl: string = require("./my-date-picker.component.html");
 // webpack2_
 
 export const MYDP_VALUE_ACCESSOR: any = {
