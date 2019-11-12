@@ -6,8 +6,8 @@ import { UtilService } from "./services/my-date-picker.util.service";
 
 // webpack1_
 //declare var require: any;
-export const myDpStyles: string = require("./my-date-picker.component.css");	
-export const myDpTpl: string = require("./my-date-picker.component.html");
+//export const myDpStyles: string = require("./my-date-picker.component.css");	
+//export const myDpTpl: string = require("./my-date-picker.component.html");
 // webpack2_
 
 export const MYDP_VALUE_ACCESSOR: any = {
@@ -31,8 +31,10 @@ const YYYY = "yyyy";
 @Component({
     selector: "my-date-picker",
     exportAs: "mydatepicker",
-    styles: [myDpStyles],
-    templateUrl: myDpTpl,
+    templateUrl: './my-date-picker.component.html',
+    styleUrls: ['./my-date-picker.component.css'],
+    //styles: [myDpStyles],
+    //templateUrl: myDpTpl,
     providers: [LocaleService, UtilService, MYDP_VALUE_ACCESSOR],
     encapsulation: ViewEncapsulation.None
 })
